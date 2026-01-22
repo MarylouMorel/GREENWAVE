@@ -21,7 +21,5 @@ public class Badge {
     private String description;
 
     @Column
-    private String conditionObtention;
-
-
+    private int nombreSessionsValides;
 }

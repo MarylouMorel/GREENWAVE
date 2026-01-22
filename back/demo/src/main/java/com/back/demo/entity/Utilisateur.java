@@ -35,6 +35,8 @@ public class Utilisateur {
     @Column(nullable = false)
     private String statutCompte;
 
+    @Column(nullable = false)
+    private int compteurPoints = 0;
     @ManyToOne
     @JoinColumn(name = "id_role", nullable = false)
     private Role role;

@@ -1,5 +1,6 @@
 package com.back.demo.entity;
 
+import com.back.demo.enumeration.StatutInscription;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -25,8 +26,9 @@ public class Inscription {
     @Column(nullable = false)
     private LocalDate dateInscription;
 
-    @Column(nullable = false)
-    private String statutInscription;
+    @Column(name = "statut_inscription", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private StatutInscription statutInscription;
 
     @ManyToOne
     @JoinColumn(name = "id_utilisateur", nullable = false)
