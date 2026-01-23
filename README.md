@@ -1,4 +1,4 @@
-# Projet [Greenwave], readme généré via IA afin de garantir une installation plus fiable sur notre
+# Projet [Greenwave], readme généré via IA afin de garantir une installation plus fiable sur notre projet
 
 Application web full-stack avec Spring Boot (Backend), Vue.js (Frontend) et MySQL (Base de données).
 
