@@ -13,8 +13,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.Optional;
-
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api/utilisateurs")
 @RequiredArgsConstructor
@@ -35,13 +36,12 @@ public class UtilisateurController {
         Role role = roleRepository.findByLibelleRole("utilisateur")
                 .orElseThrow(() -> new RuntimeException("Rôle par défaut non trouvé"));
 
-        String hashedPassword = passwordEncoder.encode(dto.motDePasse);
 
         Utilisateur utilisateur = new Utilisateur();
         utilisateur.setNom(dto.nom);
         utilisateur.setPrenom(dto.prenom);
         utilisateur.setEmail(dto.email);
-        utilisateur.setMotDePasse(hashedPassword);
+        utilisateur.setMotDePasse(dto.motDePasse);
         utilisateur.setDateInscription(LocalDate.now());
         utilisateur.setStatutCompte("ACTIF");
         utilisateur.setCompteurPoints(0);
@@ -61,7 +61,7 @@ public class UtilisateurController {
 
         Utilisateur utilisateur = optUser.get();
 
-        if(!passwordEncoder.matches(dto.motDePasse, utilisateur.getMotDePasse())) {
+        if(!Objects.equals(dto.motDePasse, utilisateur.getMotDePasse())){
             return ResponseEntity.status(401).body("Email ou mot de passe incorrect");
         }
 
