@@ -9,7 +9,6 @@ import com.back.demo.repository.UtilisateurRepository;
 import com.back.demo.repository.RoleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -23,9 +22,6 @@ public class UtilisateurController {
 
     private final UtilisateurRepository utilisateurRepository;
     private final RoleRepository roleRepository;
-    private final PasswordEncoder passwordEncoder;
-
-
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody UtilisateurDTO dto) {
